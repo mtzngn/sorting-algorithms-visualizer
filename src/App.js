@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import styled from "styled-components";
+import Navbar from "./components/Navbar";
+import Visualizer from "./components/Visualizer"; 
+import Control from "./components/Control"; 
 
+const StyledApp = styled.div`
+
+height: 100vh;
+width: 100%;
+background-color: #8ac4d0;
+
+`
 function App() {
+  const [numArr, setNumArr] = useState()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <StyledApp>
+      <Navbar/>
+      <Visualizer/>
+      <Control/>
+    </StyledApp>
   );
 }
 
