@@ -1,10 +1,25 @@
-import './App.css';
+import { useState } from "react";
+import styled from "styled-components";
+import Navbar from "./components/Navbar";
+import Visualizer from "./components/Visualizer"; 
+import Control from "./components/Control"; 
 
+const StyledApp = styled.div`
+
+height: 100vh;
+width: 100%;
+background-color: #8ac4d0;
+
+`
 function App() {
+  const [numArr, setNumArr] = useState()
+
   return (
-    <div className="App">
-      <h1>hello madafaka</h1>
-    </div>
+    <StyledApp>
+      <Navbar/>
+      <Visualizer/>
+      <Control/>
+    </StyledApp>
   );
 }
 
