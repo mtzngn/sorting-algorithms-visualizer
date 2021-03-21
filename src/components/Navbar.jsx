@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import Button from "./Button"
+import { insertionSort, randomArrCreate, bubbleSort, selectionSort, mergeSort } from "../utils/";
+
 
 const StyledNavbar = styled.div`
 height: 15%;
@@ -28,9 +29,29 @@ background-color: #28527a;
             margin: 0.7rem;
         }
     }
+    .btn{
+        padding: 0.8rem 1.8rem;
+        background-color: rgba(244, 209, 96, 0.8);
+        border: none;
+        border-radius: 0.5rem;
+        box-shadow: 2px 2px 4px 4px rgba(0,0,0,0.5);
+        transition: all 0.1s ease-in;
+    }
+    .btn:hover{
+        background-color: #fbeeac;
+        transform: translateY(-2px);
+        cursor: pointer;
+    }
+    .btn:active{
+    background-color: #f4d160;
+    box-shadow: 1px 1px 2px 2px rgba(0,0,0,0.5);
+    }
+    .btn:focus{
+    outline: none;
+    }
 }
 `
-const Navbar = () => {
+const Navbar = ({ numArr, setNumArr }) => {
     return(
         <StyledNavbar>
             <div className="title">
@@ -39,19 +60,20 @@ const Navbar = () => {
             <div className="nav">
                 <ul>
                     <li>
-                        <Button btnName={"Randomize"}/>
+                        <button onClick={()=>setNumArr(randomArrCreate())} className="btn">Randomize</button>
                     </li>
                     <li>
-                        <Button btnName={"Bubble Sort"}/>
+                        <button onClick={()=>bubbleSort([...numArr], setNumArr)} className="btn">Bubble Sort</button>
                     </li>
                     <li>
-                        <Button btnName={"Merge Sort"}/>
+                        <button onClick={()=>setNumArr(mergeSort([...numArr], setNumArr))} className="btn">Merge Sort</button>
+
                     </li>
                     <li>
-                        <Button btnName={"Insertion Sort"}/>
+                        <button onClick={()=>insertionSort([...numArr], setNumArr)} className="btn">Insertion Sort</button>
                     </li>
                     <li>
-                        <Button btnName={"Selection Sort"}/>
+                        <button onClick={()=>selectionSort([...numArr], setNumArr)} className="btn">Selection Sort</button>
                     </li>
                 </ul>
             </div>
