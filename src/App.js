@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Navbar from "./components/Navbar";
 import Visualizer from "./components/Visualizer"; 
 import Control from "./components/Control"; 
+import randomArrCreate from "./utils/";
 
 const StyledApp = styled.div`
 
@@ -12,12 +13,12 @@ background-color: #8ac4d0;
 
 `
 function App() {
-  const [numArr, setNumArr] = useState()
+  const [numArr, setNumArr] = useState(randomArrCreate())
 
   return (
     <StyledApp>
       <Navbar/>
-      <Visualizer/>
+      <Visualizer numArr={numArr}/>
       <Control/>
     </StyledApp>
   );
