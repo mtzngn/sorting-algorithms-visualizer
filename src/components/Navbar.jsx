@@ -55,7 +55,7 @@ const Navbar = ({ numArr, setNumArr }) => {
     return(
         <StyledNavbar>
             <div className="title">
-                <h1>SORTING ALGORITHM VISUALIZER</h1>
+                <h1>SORTING ALGORITHMS VISUALIZER</h1>
             </div>
             <div className="nav">
                 <ul>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 
+
 const StyledVisualizer = styled.div`
 height: 70%;
 width: 100%;
@@ -39,14 +40,12 @@ const Visualizer = ({ numArr }) => {
     return(
         <StyledVisualizer>
         <div className="container">
-        {numArr.map((num, i)=>{
-            return(
+        {numArr.map((num, i)=>(
                 <div className="bar-wrap">
                 <StyledBar num={num} key={i} className="bar"></StyledBar>
                 <p>{num}</p>
                 </div>
-            )
-        })}
+            ))}
 
         </div>
         </StyledVisualizer>

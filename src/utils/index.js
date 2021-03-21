@@ -33,14 +33,17 @@ export const bubbleSort = async(list, setNumArr) => {
     for(let j =0; j < list.length ; j++){
         for(let i = 0; i < list.length ; i++){
             if(list[i] > list[i+1]){
-                let temp = list[i+1];
-                list[i+1] = list[i];
-                list[i] = temp;
-                await sleep(100);
-                setNumArr(list);
-            }
+                let small = list[i+1];
+                let big = list[i];
+                list[i+1] = big;
+                list[i] = small;
 
+            }
+            await setNumArr(list);
+            await sleep(400);
         }
+
+
     }
 }
 
