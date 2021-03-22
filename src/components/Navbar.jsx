@@ -3,7 +3,7 @@ import { insertionSort, randomArrCreate, bubbleSort, selectionSort, mergeSort } 
 
 
 const StyledNavbar = styled.div`
-height: 15%;
+height: fit-content;
 width: 100%;
 background-color: #28527a;
 .title{
@@ -52,6 +52,7 @@ background-color: #28527a;
 }
 `
 const Navbar = ({ numArr, setNumArr }) => {
+
     return(
         <StyledNavbar>
             <div className="title">
@@ -66,7 +67,7 @@ const Navbar = ({ numArr, setNumArr }) => {
                         <button onClick={()=>bubbleSort([...numArr], setNumArr)} className="btn">Bubble Sort</button>
                     </li>
                     <li>
-                        <button onClick={()=>setNumArr(mergeSort([...numArr], setNumArr))} className="btn">Merge Sort</button>
+                        <button onClick={()=>mergeSort([...numArr], setNumArr)} className="btn">Merge Sort</button>
 
                     </li>
                     <li>

@@ -24,7 +24,7 @@ export const insertionSort = async(list, setNumArr) => {
                 list[j-1] = list[j];
                 list[j] = temp;
                 await sleep(100);
-                setNumArr(list);
+                setNumArr([...list]);
             }
         }    
     }
@@ -37,30 +37,32 @@ export const bubbleSort = async(list, setNumArr) => {
                 let big = list[i];
                 list[i+1] = big;
                 list[i] = small;
-
             }
-            await setNumArr(list);
-            await sleep(400);
+            setNumArr([...list]);
+            await sleep(100);
+
+
         }
 
 
     }
+    
 }
 
 export const selectionSort = async(list, setNumArr) => {
     let len = list.length;
 
-for(let i = 0; i < len; i++){
-    for(let j = i; j < len; j++){
-        if(list[i] > list[j]){
-            let temp = list[i];
-            list[i] = list[j];
-            list[j] = temp;
-            await sleep(100);
-            setNumArr(list);
+    for(let i = 0; i < len; i++){
+        for(let j = i; j < len; j++){
+            if(list[i] > list[j]){
+                let temp = list[i];
+                list[i] = list[j];
+                list[j] = temp;
+                await sleep(100);
+                setNumArr([...list]);
+            }
         }
     }
-}
 }
 
 const merge = (left, right) => {
@@ -75,7 +77,7 @@ const merge = (left, right) => {
     return [ ...arr, ...left, ...right ];
 }
 
-export const mergeSort = (list) => {
+export const mergeSort = async(list, setNumArr) => {
     const half = list.length / 2;
     
     if(list.length < 2){
@@ -83,7 +85,8 @@ export const mergeSort = (list) => {
     }
     
     const left = list.splice(0, half);
-    return merge(mergeSort(left),mergeSort(list));
+    return merge(mergeSort(left),mergeSort(list))
+
   }
 
 
