@@ -51,7 +51,7 @@ background-color: #28527a;
     }
 }
 `
-const Navbar = ({ numArr, setNumArr }) => {
+const Navbar = ({ numArr, setNumArr, speed, on, setOn }) => {
 
     return(
         <StyledNavbar>
@@ -61,20 +61,21 @@ const Navbar = ({ numArr, setNumArr }) => {
             <div className="nav">
                 <ul>
                     <li>
-                        <button onClick={()=>setNumArr(randomArrCreate())} className="btn">Randomize</button>
+                        <button onClick={()=>setNumArr(randomArrCreate())} className="btn" disabled={on}>Randomize</button>
                     </li>
                     <li>
-                        <button onClick={()=>bubbleSort([...numArr], setNumArr)} className="btn">Bubble Sort</button>
+                        <button onClick={()=>bubbleSort([...numArr], setNumArr, speed, setOn, on)} className="btn" disabled={on}>Bubble Sort</button>
                     </li>
                     <li>
-                        <button onClick={()=>mergeSort([...numArr], setNumArr)} className="btn">Merge Sort</button>
+                        <button onClick={()=>mergeSort([...numArr], setNumArr, setOn, on)} className="btn" disabled={on}>Merge Sort</button>
 
                     </li>
                     <li>
-                        <button onClick={()=>insertionSort([...numArr], setNumArr)} className="btn">Insertion Sort</button>
+                        <button onClick={()=>insertionSort([...numArr], setNumArr, speed, setOn, on)} className="btn" disabled={on}>Insertion Sort</button>
                     </li>
                     <li>
-                        <button onClick={()=>selectionSort([...numArr], setNumArr)} className="btn">Selection Sort</button>
+                        <button 
+                        onClick={()=>selectionSort([...numArr], setNumArr, speed, setOn, on)} className="btn" disabled={on}>Selection Sort</button>
                     </li>
                 </ul>
             </div>
