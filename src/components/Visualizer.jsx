@@ -35,16 +35,17 @@ const StyledBar = styled.div`
         height: ${({num}) => num && `${num}%`};
         width: 100%;
         /* background-color:#f4d160; */
-        background-color:${({index, numArr, num}) => (numArr[index] === num) ? '#7eca9c' : '#f4d160'} ;
+        background-color:${({index, numArr, num}) => (numArr[index] === num) ? '#ff7171' : '#f4d160'} ;
+        background-color:${({ sorted }) => sorted ? '#7eca9c' : ''};
         box-shadow: 1px 1px 1px 1px rgba(0,0,0,0.5);
 ` 
-const Visualizer = ({ numArr, index }) => {
+const Visualizer = ({ numArr, index, sorted }) => {
     return(
         <StyledVisualizer>
         <div className="container">
         {numArr.map((num, i)=>(
                 <div className="bar-wrap">
-                <StyledBar num={num} key={i} className="bar" index={index} numArr={numArr}></StyledBar>
+                <StyledBar num={num} key={i} className="bar" index={index} numArr={numArr} sorted={sorted}></StyledBar>
                 <p>{num}</p>
                 </div>
             ))}

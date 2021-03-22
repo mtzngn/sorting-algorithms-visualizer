@@ -19,13 +19,14 @@ function App() {
   const [numArr, setNumArr] = useState(randomArrCreate(width));
   const [speed, setSpeed] = useState(50);
   const [on, setOn] = useState(false);
-  const [index, setIndex] = useState(0)
+  const [index, setIndex] = useState(0);
+  const [sorted, setSorted] = useState(false);
   
  
   return (
     <StyledApp>
-      <Navbar numArr={numArr} setNumArr={setNumArr} speed={speed} on={on} setOn={setOn} setIndex={setIndex}/>
-      <Visualizer numArr={numArr} index={index}/>
+      <Navbar numArr={numArr} setNumArr={setNumArr} speed={speed} on={on} setOn={setOn} setIndex={setIndex} sorted={sorted} setSorted={setSorted}/>
+      <Visualizer numArr={numArr} index={index} sorted={sorted}/>
       <Control speed={speed} setSpeed={setSpeed} on={on}/>
     </StyledApp>
   );

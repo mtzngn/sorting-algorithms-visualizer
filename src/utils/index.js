@@ -23,7 +23,7 @@ const sleep = (ms) => {
   }
   
 
-export const insertionSort = async(list, setNumArr, speed, setOn, on, setIndex) => {
+export const insertionSort = async(list, setNumArr, speed, setOn, on, setIndex, sorted, setSorted) => {
     setOn(!on)
 
     let len = list.length;
@@ -36,16 +36,15 @@ export const insertionSort = async(list, setNumArr, speed, setOn, on, setIndex) 
                 let temp = list[j - 1];
                 list[j-1] = list[j];
                 list[j] = temp;
-                await sleep(6000 / ((speed + 1) * 2));
+                await sleep(6000 / ((speed + j + 1) * 2));
                 setNumArr([...list]);
             }
         }    
     }
     setOn(on)
-
-
+    setSorted(!sorted)
 }
-export const bubbleSort = async(list, setNumArr, speed, setOn, on, setIndex) => {
+export const bubbleSort = async(list, setNumArr, speed, setOn, on, setIndex, sorted, setSorted) => {
     setOn(!on)
     for(let j =0; j < list.length ; j++){
 
@@ -56,17 +55,17 @@ export const bubbleSort = async(list, setNumArr, speed, setOn, on, setIndex) => 
                 list[i+1] = big;
                 list[i] = small;
                 setIndex(i +1);
-
-
+                setNumArr([...list]);
+                await sleep(6000 / ((speed + ((1/i) * 7) + 1) * 2));
             } 
-            setNumArr([...list]);
-            await sleep(6000 / ((speed + 1) * 2));
+
         }
     }
     setOn(on)
+    setSorted(!sorted)
 }
 
-export const selectionSort = async(list, setNumArr, speed, setOn, on, setIndex) => {
+export const selectionSort = async(list, setNumArr, speed, setOn, on, setIndex, sorted, setSorted) => {
     let len = list.length;
     setOn(!on)
 
@@ -77,12 +76,13 @@ export const selectionSort = async(list, setNumArr, speed, setOn, on, setIndex) 
                 let temp = list[i];
                 list[i] = list[j];
                 list[j] = temp;
-                await sleep(6000 / ((speed + 1) * 2));
+                await sleep(6000 / ((speed + j + 1) * 2));
                 setNumArr([...list]);
             }
         }
     }
     setOn(on)
+    setSorted(!sorted)
 }
 
 const merge = (left, right) => {
@@ -97,7 +97,7 @@ const merge = (left, right) => {
     return [ ...arr, ...left, ...right ];
 }
 
-export const mergeSort = async(list, setNumArr) => {
+export const mergeSort = async(list, setNumArr, speed, setOn, on, setIndex, sorted, setSorted) => {
     const half = list.length / 2;
     
     if(list.length < 2){
