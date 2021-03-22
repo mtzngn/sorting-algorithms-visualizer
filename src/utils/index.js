@@ -1,8 +1,18 @@
-export const randomArrCreate = () => {
+export const randomArrCreate = (width) => {
     let randomArr = [];
+    let length;
+    let range;
+    if(width < 800){
+        length = 20
+    } else {length = 50}
 
-    while(randomArr.length < 60){
-        let randNum = (Math.floor(Math.random() * 99)) + 1;
+    if(length == 20){
+        range = 50;
+    } else {
+        range = 100
+    }
+    while(randomArr.length < length){
+        let randNum = (Math.floor(Math.random() * range)) + 1;
         !randomArr.includes(randNum) && randomArr.push(randNum);
     }
     return randomArr;
@@ -13,7 +23,7 @@ const sleep = (ms) => {
   }
   
 
-export const insertionSort = async(list, setNumArr, speed, setOn, on) => {
+export const insertionSort = async(list, setNumArr, speed, setOn, on, setIndex) => {
     setOn(!on)
 
     let len = list.length;
@@ -22,6 +32,7 @@ export const insertionSort = async(list, setNumArr, speed, setOn, on) => {
 
         for(let j = i; j > 0; j--){
             if(list[j] < list[j-1]){
+                setIndex(j)
                 let temp = list[j - 1];
                 list[j-1] = list[j];
                 list[j] = temp;
@@ -34,34 +45,39 @@ export const insertionSort = async(list, setNumArr, speed, setOn, on) => {
 
 
 }
-export const bubbleSort = async(list, setNumArr, speed, setOn, on) => {
+export const bubbleSort = async(list, setNumArr, speed, setOn, on, setIndex) => {
     setOn(!on)
     for(let j =0; j < list.length ; j++){
+
         for(let i = 0; i < list.length ; i++){
             if(list[i] > list[i+1]){
                 let small = list[i+1];
                 let big = list[i];
                 list[i+1] = big;
                 list[i] = small;
-            }
+                setIndex(i +1);
+
+
+            } 
             setNumArr([...list]);
-            await sleep(speed * 3);
+            await sleep(6000 / ((speed + 1) * 2));
         }
     }
     setOn(on)
 }
 
-export const selectionSort = async(list, setNumArr, speed, setOn, on) => {
+export const selectionSort = async(list, setNumArr, speed, setOn, on, setIndex) => {
     let len = list.length;
     setOn(!on)
 
     for(let i = 0; i < len; i++){
         for(let j = i; j < len; j++){
             if(list[i] > list[j]){
+                setIndex(j);
                 let temp = list[i];
                 list[i] = list[j];
                 list[j] = temp;
-                await sleep(speed * 3);
+                await sleep(6000 / ((speed + 1) * 2));
                 setNumArr([...list]);
             }
         }

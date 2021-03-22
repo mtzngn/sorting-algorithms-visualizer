@@ -8,6 +8,9 @@ background-color: #28527a;
 display: flex;
 justify-content:center;
 align-items:center;
+label{
+    font-size: 1.5rem;
+}
 `
 const Control = ({ speed, setSpeed, on }) => {
 
