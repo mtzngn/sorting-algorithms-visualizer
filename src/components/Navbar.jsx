@@ -54,7 +54,7 @@ background-color: #28527a;
     }
 }
 `
-const Navbar = ({ numArr, setNumArr, speed, on, setOn, setIndex }) => {
+const Navbar = ({ numArr, setNumArr, speed, on, setOn, setIndex, sorted, setSorted }) => {
 
     return(
         <StyledNavbar>
@@ -64,21 +64,24 @@ const Navbar = ({ numArr, setNumArr, speed, on, setOn, setIndex }) => {
             <div className="nav">
                 <ul>
                     <li>
-                        <button onClick={()=>setNumArr(randomArrCreate())} className="btn" disabled={on}>Randomize</button>
+                        <button onClick={()=>{
+                        setNumArr(randomArrCreate());
+                        setSorted(false);
+                        }} className="btn" disabled={on}>Randomize</button>
                     </li>
                     <li>
-                        <button onClick={()=>bubbleSort([...numArr], setNumArr, speed, setOn, on, setIndex )} className="btn" disabled={on}>Bubble Sort</button>
+                        <button onClick={()=>bubbleSort([...numArr], setNumArr, speed, setOn, on, setIndex, sorted, setSorted )} className="btn" disabled={on}>Bubble Sort</button>
                     </li>
                     <li>
-                        <button onClick={()=>mergeSort([...numArr], setNumArr, setOn, on)} className="btn" disabled={on}>Merge Sort</button>
+                        <button onClick={()=>mergeSort([...numArr], setNumArr, setOn, on, setIndex, sorted, setSorted )} className="btn" disabled={on}>Merge Sort</button>
 
                     </li>
                     <li>
-                        <button onClick={()=>insertionSort([...numArr], setNumArr, speed, setOn, on, setIndex)} className="btn" disabled={on}>Insertion Sort</button>
+                        <button onClick={()=>insertionSort([...numArr], setNumArr, speed, setOn, on, setIndex, sorted, setSorted)} className="btn" disabled={on}>Insertion Sort</button>
                     </li>
                     <li>
                         <button 
-                        onClick={()=>selectionSort([...numArr], setNumArr, speed, setOn, on, setIndex)} className="btn" disabled={on}>Selection Sort</button>
+                        onClick={()=>selectionSort([...numArr], setNumArr, speed, setOn, on, setIndex, sorted, setSorted)} className="btn" disabled={on}>Selection Sort</button>
                     </li>
                     <li>
                         <button onClick={()=>window.location.reload()} class="btn">Refresh Page</button>
