@@ -15,7 +15,6 @@ background-color: #8ac4d0;
 function App() {
   const [numArr, setNumArr] = useState(randomArrCreate());
   
-
  
   return (
     <StyledApp>
