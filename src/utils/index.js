@@ -85,16 +85,16 @@ export const selectionSort = async(list, setNumArr, speed, setOn, on, setIndex, 
     setSorted(!sorted)
 }
 
-const merge = (left, right) => {
+const merge = async(left, right) => {
     let arr = []
     while (left.length && right.length) {
         if (left[0] < right[0]) {
-            arr.push(left.shift());
+            await arr.push(left.shift());
         } else {
-            arr.push(right.shift());
+            await arr.push(right.shift());
         }
     }
-    return [ ...arr, ...left, ...right ];
+    let arrr =  arr.concat(left.concat(right));
 }
 
 export const mergeSort = async(list, setNumArr, speed, setOn, on, setIndex, sorted, setSorted) => {
@@ -105,8 +105,8 @@ export const mergeSort = async(list, setNumArr, speed, setOn, on, setIndex, sort
     }
     
     const left = list.splice(0, half);
-    return merge(mergeSort(left),mergeSort(list))
-
+    let sortedlist = merge(mergeSort(left),mergeSort(list));
+    console.log(sortedlist)
   }
 
 
