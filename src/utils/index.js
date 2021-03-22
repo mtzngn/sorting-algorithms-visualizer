@@ -13,7 +13,9 @@ const sleep = (ms) => {
   }
   
 
-export const insertionSort = async(list, setNumArr) => {
+export const insertionSort = async(list, setNumArr, speed, setOn, on) => {
+    setOn(!on)
+
     let len = list.length;
 
     for(let i = 1; i < len +1; i++){
@@ -23,13 +25,17 @@ export const insertionSort = async(list, setNumArr) => {
                 let temp = list[j - 1];
                 list[j-1] = list[j];
                 list[j] = temp;
-                await sleep(100);
+                await sleep(6000 / ((speed + 1) * 2));
                 setNumArr([...list]);
             }
         }    
     }
+    setOn(on)
+
+
 }
-export const bubbleSort = async(list, setNumArr) => {
+export const bubbleSort = async(list, setNumArr, speed, setOn, on) => {
+    setOn(!on)
     for(let j =0; j < list.length ; j++){
         for(let i = 0; i < list.length ; i++){
             if(list[i] > list[i+1]){
@@ -39,18 +45,15 @@ export const bubbleSort = async(list, setNumArr) => {
                 list[i] = small;
             }
             setNumArr([...list]);
-            await sleep(100);
-
-
+            await sleep(speed * 3);
         }
-
-
     }
-    
+    setOn(on)
 }
 
-export const selectionSort = async(list, setNumArr) => {
+export const selectionSort = async(list, setNumArr, speed, setOn, on) => {
     let len = list.length;
+    setOn(!on)
 
     for(let i = 0; i < len; i++){
         for(let j = i; j < len; j++){
@@ -58,11 +61,12 @@ export const selectionSort = async(list, setNumArr) => {
                 let temp = list[i];
                 list[i] = list[j];
                 list[j] = temp;
-                await sleep(100);
+                await sleep(speed * 3);
                 setNumArr([...list]);
             }
         }
     }
+    setOn(on)
 }
 
 const merge = (left, right) => {
