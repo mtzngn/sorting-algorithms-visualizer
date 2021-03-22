@@ -11,6 +11,8 @@ align-items:center;
 label{
     font-size: 1.5rem;
     margin-right: 5px;
+    color: #fff;
+
 }
 
 input[type=range] {

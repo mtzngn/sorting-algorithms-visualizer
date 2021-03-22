@@ -7,6 +7,7 @@ height: 15vh;
 width: 100%;
 background-color: #28527a;
 
+
 .title{
     height: 50%;
     display: flex;
@@ -14,6 +15,7 @@ background-color: #28527a;
     align-items: center;
     padding-left: 10px;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    color: #fff;
     h1{
         margin-top: 10px;
     }
