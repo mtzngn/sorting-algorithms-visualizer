@@ -103,7 +103,7 @@ const merge = async(left,right, arr2, setNumArr) => {
     for(let i = temp.length - 1 ; i >= 0 ; i--){
         arr2.splice(index , 0,temp[i] )
     }
-    await sleep(100)
+    await sleep(500)
     setNumArr([...arr2])
     return sorted.concat(left.concat(right))
 }
@@ -115,7 +115,8 @@ export const mergeSort = async(arr, arr2, setNumArr, setOn, on, setIndex, sorted
     let left = arr.splice(0, arr.length/2);
     let right = arr; 
 
-    return await merge(await mergeSort(left, arr2, setNumArr), await mergeSort(right, arr2, setNumArr), arr2,setNumArr)
+    return await merge(await mergeSort(left, arr2, setNumArr), await mergeSort(right, arr2, setNumArr), arr2,setNumArr);
+  
 
 }
 

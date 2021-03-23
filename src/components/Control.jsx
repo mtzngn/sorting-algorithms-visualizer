@@ -89,7 +89,30 @@ input[type=range]::-ms-thumb {
   cursor: pointer;
   margin-top: 0px;
 }
+.details{
+  width: 60%;
+  height: 100%;
+  display: flex;
+  align-items:center;
+  justify-content:center;
+  color : #fff;
 
+  h3{
+    font-weight: 100;
+
+  }
+  .sections{
+    width:15%;
+    height: 80%;
+  } 
+  .sections:first-child{
+    width:30%;
+
+  }
+  @media(max-width:768px){
+    display:none;
+  }
+}
 
 `
 const Control = ({ speed, setSpeed, on }) => {
@@ -101,6 +124,44 @@ const Control = ({ speed, setSpeed, on }) => {
         <StyledControl>
             <label>Change Animation Speed</label>
             <input type="range" value={speed} onChange={handleChange} disabled={on}></input>
+            <div className="details">
+              <div className="sections">
+                <h3>Performance</h3>
+                <h3>Worst-case time complexity</h3>
+                <h3>Average time complexity</h3>
+                <h3>Best-case time complexity</h3>
+                <h3>Worst-case space complexity</h3>
+              </div>
+              <div className="sections">
+                <h3>Bubble Sort</h3>
+                <h3>O(n<sup>2</sup>)</h3>
+                <h3>O(n<sup>2</sup>)</h3>
+                <h3>O(n)</h3>
+                <h3>O(1)</h3>
+              </div>
+              <div className="sections">
+                <h3>Merge Sort</h3>
+                <h3>O(n log n)</h3>
+                <h3>O(n log n)</h3>
+                <h3>O(n log n)</h3>
+                <h3>O(n)</h3>
+              </div>
+              <div className="sections">
+                <h3>Insertion Sort</h3>
+                <h3>O(n<sup>2</sup>)</h3>
+                <h3>O(n<sup>2</sup>)</h3>
+                <h3>O(n)</h3>
+                <h3>O(1)</h3>
+              </div>
+              <div className="sections">
+                <h3>Selection Sort</h3>
+                <h3>O(n<sup>2</sup>)</h3>
+                <h3>O(n<sup>2</sup>)</h3>
+                <h3>O(n<sup>2</sup>)</h3>
+                <h3>O(1)</h3>
+              </div>
+
+            </div>
         </StyledControl>
     )
 }
