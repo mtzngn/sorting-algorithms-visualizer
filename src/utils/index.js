@@ -85,29 +85,37 @@ export const selectionSort = async(list, setNumArr, speed, setOn, on, setIndex, 
     setSorted(!sorted)
 }
 
-const merge = async(left, right) => {
-    let arr = []
-    while (left.length && right.length) {
-        if (left[0] < right[0]) {
-            await arr.push(left.shift());
+
+const merge = (left,right, arr2, setNumArr) => {
+    let index = arr2.indexOf((left.concat(right))[0]);
+    let sorted = [];
+
+    while(left.length  && right.length){
+        if(left[0] < right[0]){
+            sorted.push(left.shift())
         } else {
-            await arr.push(right.shift());
+            sorted.push(right.shift())
         }
     }
-    let arrr =  arr.concat(left.concat(right));
-}
-
-export const mergeSort = async(list, setNumArr, speed, setOn, on, setIndex, sorted, setSorted) => {
-    const half = list.length / 2;
-    
-    if(list.length < 2){
-      return list; 
+    let len = sorted.concat(left.concat(right)).length;
+    arr2.splice(index, len)
+    let temp = sorted.concat(left.concat(right))
+    for(let i = temp.length - 1 ; i >= 0 ; i--){
+        arr2.splice(index , 0,temp[i] )
     }
     
-    const left = list.splice(0, half);
-    let sortedlist = merge(mergeSort(left),mergeSort(list));
-    console.log(sortedlist)
-  }
+    setNumArr(arr2)
+    return sorted.concat(left.concat(right))
+}
+export const mergeSort = (arr, arr2, setNumArr, setOn, on, setIndex, sorted, setSorted) => {
 
+
+    if(arr.length < 2){ return arr}
+    let left = arr.splice(0, arr.length/2);
+    let right = arr; 
+
+    return merge(mergeSort(left, arr2, setNumArr), mergeSort(right, arr2, setNumArr), arr2,setNumArr)
+
+}
 
 
