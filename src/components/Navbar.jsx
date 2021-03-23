@@ -75,7 +75,7 @@ const Navbar = ({ numArr, setNumArr, speed, on, setOn, setIndex, sorted, setSort
                         <button onClick={()=>bubbleSort([...numArr], setNumArr, speed, setOn, on, setIndex, sorted, setSorted )} className="btn" disabled={on}>Bubble Sort</button>
                     </li>
                     <li>
-                        <button onClick={()=>mergeSort([...numArr], setNumArr, setOn, on, setIndex, sorted, setSorted )} className="btn" disabled={on}>Merge Sort</button>
+                        <button onClick={()=>mergeSort([...numArr],[...numArr], setNumArr, setOn, on, setIndex, sorted, setSorted )} className="btn" disabled={on}>Merge Sort</button>
 
                     </li>
                     <li>
