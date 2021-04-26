@@ -2,8 +2,10 @@
 I wanted to learn more about algorithms and i realized visualization helped me to understand better.
 Than i decided to make this project to learn more about algorithms.
 
-You can check it out from here [https://mtzngn.github.io/sorting-algorithms-visualizer/]
+You can check it out from here https://mtzngn.github.io/sorting-algorithms-visualizer/
+
 If you want to run it locally;
+
 First install the dependencies by running the following command in project directory:
 ### `npm install`
 Than you can styart the app with following command:
